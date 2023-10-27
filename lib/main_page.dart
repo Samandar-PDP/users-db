@@ -37,7 +37,10 @@ class _MainPageState extends State<MainPage> {
                   itemCount: snapshot.data?.length,
                   itemBuilder: (context, index) {
                     final user = snapshot.data?[index];
-                    return ListTile(
+                    print(snapshot.requireData.isEmpty);
+                    return snapshot.data?.isEmpty == true ? const Center(
+                      child: Text("Foydalanuvchilar mavjud emas!",style: TextStyle(color: Colors.black12),),
+                    ) : ListTile(
                       onTap: () {
                         _showCurrentUser(context, user);
                       },
